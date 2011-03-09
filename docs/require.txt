@@ -1,0 +1,16 @@
+The aim to right this tools is to easily smooth show the items.
+
+
+what we can config is
+{
+	container : '',
+	speed	  : 500,
+	number	  : 5,
+	effect    : 'default'
+	mode	  : [ 'cirle' , 'static' ]
+}
+
+
+public function
+
+.add($);

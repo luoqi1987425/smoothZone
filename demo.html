@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript" src="jquery-1.4.2.min.js"></script>
+<title>Demo</title>
+<style type="text/css">
+.body{
+	float:left;
+	overflow:hidden;
+}
+
+.hidden{
+	display:none;
+
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<div class="body">
+	
+	
+</div>
+
+
+<script>
+	
+var new_item = $('<div class="item"><img src="images/header2.jpg" />Hi i am TT</div>');
+
+
+
+$(function (){
+
+var item_a = $('<div class="item" id="rocky"><img src="images/header2.jpg"   />Hi i am rocky</div>');
+var item_b = $('<div class="item" id="rocky"><img src="images/header1.jpg"   />Hi i am rocky</div>');
+var item_c = $('<div class="item" id="rocky"><img src="images/header2.jpg"   />Hi i am rocky</div>');
+item_a.css("display" , "none");
+item_b.css("display" , "none");
+item_c.css("display" , "none");
+
+
+	setTimeout(function() {
+				
+				$(".body").prepend(item_a);
+				
+				item_a.animate({
+					 opacity: "show"
+				}, 2000 , function(){
+					
+					$(".body").prepend(item_b);
+					item_b.animate({
+					 opacity: "show"
+					}, 2000 , function(){
+						item_a.css("display" , "none");
+						item_a.remove();
+						$(".body").prepend(item_c);
+						item_c.animate({
+						 opacity: "show"
+						}, 2000 ,  function(){
+							$(".body").prepend(item_a);
+							item_a.animate({
+							 opacity: "show"
+							}, 2000 );
+							
+						});
+					
+					});
+				
+				} );
+	}, 2000 );
+			
+			
+     
+	
+	
+	//$("#rocky").fadeOut(10000);
+	 
+});
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

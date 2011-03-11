@@ -10,12 +10,11 @@
 
 (function( $ ){
 
-  
   /**
    * register smoothZone into Jquery Plugin
    */
   $.fn.smoothzone = function( config ) {
-	  var rtn = new smoothZone( this , config );
+	  var rtn = new SmoothZone( this , config );
 	  return rtn;
   };
   
@@ -38,10 +37,13 @@
    * 
    * __construct
    */
-  var smoothZone = function( $ctl , config ){
+  var SmoothZone = function( $ctl , config ){
 	  
 	  this._config;
 	  this._$ctl = $ctl;
+	  this._items = new Array();
+	  
+	  this._tmpNext = null;
 	  
 	  
 	  
@@ -51,7 +53,7 @@
   }
   
   
-  smoothZone.prototype = function(){
+  SmoothZone.prototype = function(){
 	  
 	  /**
 	   * get current smoothZone version
@@ -79,6 +81,27 @@
   		  
   		  
   	  },
+  	  
+  	  /**
+  	   * parse sub items into links
+  	   * mode == 'circle'
+  	   * 	circle link  
+  	   * mode == 'static'
+  	   * 	string link
+  	   */
+  	  
+  	  _parseItems : function(){
+  		  
+  		  this._$ctl.each( SmoothZone_Helper.callback( this , '_insertLink' ) );
+  		  
+  		  //if mode == 'circle'
+  		  this._items[0].setNext( this._items[(this._items.length-1)] );
+  	  },
+  	  
+  	  _insertLink : function( $item ){
+  		  this._items.push( new SmoothZone_Item( $item , next ) );
+  	  },
+  	  
   	  _run : function(){
   		  
   		  swith( this._config._mode ){
@@ -91,7 +114,6 @@
   			  default : 
   				  throw new Exception("no such mode");
   				  break;
-  			  
   		  }
   	  },
   	  _queueNext : function(){
@@ -104,14 +126,14 @@
   /**
    * The show list manager
    */
-  var smoothZoneQueue = function( ctl , config ){
+  var SmoothZone_Queue = function( ctl , config ){
 	  
 	  this._first;
 	  this._last;
 	
   }
   
-  smoothZoneQueue.prototype = {
+  SmoothZone_Queue.prototype = {
 		  
 		  add : function( newItem ){
 	  		
@@ -138,21 +160,55 @@
   /**
    * The smooth Zone item entity
    */
-  var smoothZoneItem = function( $ctl , next ){
-	  
+  var SmoothZone_Item = function( $ctl , next ){
+	
+	  this._next = next;
 	
   }
   
-  smoothZoneItem.prototype = function(){
+  SmoothZone_Item.prototype = function(){
 	  
 	  
 	  getNext : function(){
-	  		
-	  		
+		  return this._next;
+  	  },
+  	  setNext : function( next ){
+  		  this._next = next;
   	  }
 	  
 	  
   }
+  
+  
+  	/**
+  	 * some helper functions
+  	 */
+  	var SmoothZone_Helper = {};
+  
+  	/**
+  	 * create a event function
+  	 */
+  	SmoothZone_Helper.event = function(obj, strFunc) {
+		var args = [];
+		if (!obj)
+			obj = window;
+		for ( var i = 2; i < arguments.length; i++)
+			args.push(arguments[i]);
+		return function() {
+			return obj[strFunc].apply(obj, args);
+		}
+	};
+	
+	/**
+	 * create a callback function
+	 */
+	SmoothZone_Helper.callback = function(obj, strFunc) {
+		if (!obj)
+			obj = window;
+		return function() {
+			return obj[strFunc].apply(obj, arguments);
+		}
+	};
   
   
   

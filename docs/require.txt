@@ -6,8 +6,8 @@ what we can config is
 	container : '',
 	speed	  : 500,
 	number	  : 5,
-	effect    : 'default'
-	mode	  : [ 'cirle' , 'static' ]
+	effect    : 'fade'
+	mode	  : [ 'circle' , 'static' ]
 }
 
 

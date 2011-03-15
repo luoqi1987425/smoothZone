@@ -209,6 +209,12 @@
 			return obj[strFunc].apply(obj, arguments);
 		}
 	};
+
+	
+	SmoothZone.Class = function( rtn ){
+			
+
+	}
   
   
   

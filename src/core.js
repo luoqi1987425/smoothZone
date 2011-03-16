@@ -56,6 +56,9 @@ function(){
 	  	   * @param config
 	  	   */
 	  	  _initConfig : function( config ){
+	  		 
+	  		  //check the configuation
+	  		  
 	  		SmoothZone.Extend( this._config , config , true );
 	  	  }, 
 	  	  
@@ -82,7 +85,6 @@ function(){
 	  		  
 	  		  /**
 	  		   * parse items link
-	  		   * 
 	  		   */
 	  		  this._$.children().each( function(){
 	  			hackThis._insertLink.apply(hackThis, [$(this)]);
@@ -94,6 +96,13 @@ function(){
 	  		   */
 	  		  if( this._config.mode == "circle" ){
 	  			this._items[0].setNext( this._items[(this._items.length-1)] );
+	  		  }
+	  		  
+	  		  /**
+	  		   * if number > real amount
+	  		   */
+	  		  if( this._config.number > this._items.length  ){
+	  			this._config.number = this._items.length;
 	  		  }
 	  	  },
 	  	  
@@ -148,6 +157,9 @@ function(){
 	  		  }
 	  	  },
 	  	  
+	  	  /**
+	  	   * notice display show next
+	  	   */
 	  	  _displayNext : function(){
 	  		  this._display.next();
 	  	  }

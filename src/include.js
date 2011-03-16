@@ -30,6 +30,9 @@
 	  return constractor;
   };
   
+  /**
+   * here you can write some father methods
+   */
   SmoothZone.Class.Methods = {
 		  
 		 

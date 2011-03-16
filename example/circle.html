@@ -10,20 +10,33 @@
 <script type="text/javascript" src="../src/display.js"></script>
 <script type="text/javascript" src="../src/jquery.js"></script>
 </head>
+<style type="text/css">
+div.item{
+	background-color: #F8F8F8;
+	margin : 2px;
+	width:300px;
+}
+
+
+</style>
 <body>
 
 <div id = "rocky">
-	<div>
-		<img src = "" />
-		1
+	<div class="item">
+		<img src = "../images/1.jpg" />
+		3-16 琉璃苣的花语是：勇敢~
 	</div>
-	<div>
-		<img src = "" />
-		2
+	<div class="item">
+		<img src = "../images/2.jpg" />
+		刚做的指甲都花了!!!a a a 
 	</div>
-	<div>
-		<img src = "" />
-		3
+	<div class="item">
+		<img src = "../images/3.jpg" />
+		我不想说话。别跟我说话。
+	</div>
+	<div class="item">
+		<img src = "../images/4.jpg" />
+		最后三个月，这一生的幸福就靠你了。
 	</div>
 
 </div>
@@ -32,8 +45,9 @@
 <script type="text/javascript">
 
 	$("#rocky").smoothzone({
-		number 		: 1,
-		speed	  : 5000,
+		number 		: 3,
+		speed	  : 1000,
+		effect    : "fade"
 	});
 
 </script>

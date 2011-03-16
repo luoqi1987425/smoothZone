@@ -20,6 +20,11 @@ function(){
 			this._last 	= last;
 			
 		},
+		
+		getFirst : function(){
+			return this._first;
+		},
+		
 		next : function(){
 			
 			//if next is last then return

@@ -1,0 +1,47 @@
+Jquery Plugin smoothZone
+
+Summary:
+
+	smoothZone is a tool for items slide show.  you can easily use it to display your items smoothly.
+Also we supply many effect that you can choose, like fade, slice.  
+
+
+Example:
+
+	<div class="container">
+		<div>Item 1</div>
+		<div>Item 2</div>
+		<div>Item 3</div>
+		<div>Item 4</div>
+	</div>
+
+
+	$(".container").smoothzone({
+		number 		: 2,
+		speed	  : 5000,
+		effect    : "fade",
+		mode	  : "circle"
+	});
+
+Source Code Structure:
+
+	i put all the source code in src folder. i put different part into seperated js file.
+
+-src/
+
+---include.js	
+
+---core.js
+
+---item.js
+
+---display.js
+
+---jquery.js
+
+Author
+	I am Rocky, i come from china. if you have some problem or want to contact with me
+please email me.  My gmail account is luoqi.rocky@gmail.com 
+
+
+

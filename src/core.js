@@ -46,9 +46,18 @@ function(){
 	  	  add : function( $new ){
 	  		  
 	  		//check mode
-	  		queue.first.next = $new;
-	  		this._queue_next();
-	  		  
+	  		if( this._config.mode === "circle" ){
+	  			throw new Exception("sorry add function only support static mode");
+	  		}
+	  		
+	  		//create new element
+	  		var firstItem = this._display.getFirst();
+	  		var item = new SmoothZone.Item( $new , null );
+	  		firstItem.setNext(item);
+	  		this._items.push( item );
+	  		
+	  		
+	  		this._displayNext();
 	  	  },
 	  	  
 	  	  /**
@@ -116,6 +125,8 @@ function(){
 	  		  this._items.push( item );
 	  		  this._tmpNext = item;
 	  	  },
+	  	  
+	  	  
 	  	  
 	  	  /**
 	  	   * show the current numbers of items

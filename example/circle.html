@@ -4,11 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="../jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="../src/include.js"></script>
-<script type="text/javascript" src="../src/core.js"></script>
-<script type="text/javascript" src="../src/item.js"></script>
-<script type="text/javascript" src="../src/display.js"></script>
-<script type="text/javascript" src="../src/jquery.js"></script>
+<script type="text/javascript" src="../jquery.smoothzone.min.js"></script>
 </head>
 <style type="text/css">
 div.item{
@@ -41,14 +37,32 @@ div.item{
 
 </div>
 
+<br/>
+<br/>
+
+<div id = "apple">
+	
+	<img src = "../images/apple_1.png" />
+	<img src = "../images/apple_2.png" />
+	<img src = "../images/apple_3.png" />
+	<img src = "../images/apple_4.png" />
+
+</div>
 
 <script type="text/javascript">
 
-	$("#rocky").smoothzone({
+	var rocky = $("#rocky").smoothzone({
+		number 		: 3,
+		speed	  : 1000,
+		effect    : "fade"
+	});
+
+	var apple =  $("#apple").smoothzone({
 		number 		: 3,
 		speed	  : 5000,
 		effect    : "fade"
 	});
+
 
 </script>
 </body>

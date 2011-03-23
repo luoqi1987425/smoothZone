@@ -1,17 +1,7 @@
 (
 function(){
 	
-	  /**
-	   * SmoothZone.Core default configuration
-	   */
-	var configDefault = {
-			  
-			  speed	  : 3000,
-			  number  : 5,
-			  effect  : 'default',
-			  mode	  : 'circle'
-		
-	};
+	
 	
 	
 	/**
@@ -19,13 +9,15 @@ function(){
 	 */
 	var Core = SmoothZone.Class({
 		
-		_config : configDefault,
+		_config : null,
 		_$   	: null,
-		_items  : new Array(),
+		_items  : null,
 		_display : null,
 		_tmpNext : null,
 		
 		initialize : function( $ , config ){
+
+			this._items =  new Array();
 			this._$ = $;
 			this._initConfig(config);
 			this._start();
@@ -67,7 +59,19 @@ function(){
 	  	  _initConfig : function( config ){
 	  		 
 	  		  //check the configuation
-	  		  
+	  		
+	  		/**
+	  		  * SmoothZone.Core default configuration
+	  		  */
+	  		this._config = {
+	  				  
+	  				  speed	  : 3000,
+	  				  number  : 5,
+	  				  effect  : 'default',
+	  				  mode	  : 'circle'
+	  			
+	  		};
+	  		 
 	  		SmoothZone.Extend( this._config , config , true );
 	  	  }, 
 	  	  
